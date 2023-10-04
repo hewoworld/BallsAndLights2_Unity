@@ -15,26 +15,26 @@ public class Main : MonoBehaviour
 
     // Update is called once per frame
     void Update()
-    {
-        if (Input.GetMouseButtonUp(0))
+{
+        if (Input.GetMouseButtonDown(0))
         {
-            // Vi bruger funktionen ScreenPointToRay på det nuværende hovedkamera
-            // for at få en ray (stråle) i "verdens" koordinater ud fra musens
-            // skærm koordinater.
+            // Vi bruger funktionen ScreenPointToRay pï¿½ det nuvï¿½rende hovedkamera
+            // for at fï¿½ en ray (strï¿½le) i "verdens" koordinater ud fra musens
+            // skï¿½rm koordinater.
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 
-            // Med vektor-regning flyttes position lidt væk fra kameraet, så 
-            // vores nye kugle ikke starter for tæt på.
-            // Prøv evt. at ændre tallet og se hvad der sker.
-            // f'et er nødvendigt for at lave tallet til et såkaldt "float".
+            // Med vektor-regning flyttes position lidt vï¿½k fra kameraet, sï¿½ 
+            // vores nye kugle ikke starter for tï¿½t pï¿½.
+            // Prï¿½v evt. at ï¿½ndre tallet og se hvad der sker.
+            // f'et er nï¿½dvendigt for at lave tallet til et sï¿½kaldt "float".
             Vector3 position = ray.origin + ray.direction * 2.0f;
 
-            // Tilføj en ny kugle på den beregnede position. Quaternion.identity
+            // Tilfï¿½j en ny kugle pï¿½ den beregnede position. Quaternion.identity
             // bestemmer hvordan den er roteret i rummet.
-            // For en kugle gør det naturligvis ingen forskel.
+            // For en kugle gï¿½r det naturligvis ingen forskel.
             Rigidbody body = Instantiate(ballPrefab, position, Quaternion.identity);
 
-            // Sæt en fart i retning af strålen fra kameraet
+            // Sï¿½t en fart i retning af strï¿½len fra kameraet
             body.velocity = ray.direction * 5.0f;
             body.mass = 10.0f;
         }
